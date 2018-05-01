@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GD</string>
+    <string name="info">請選擇下列登入方式</string>
+    <string name="guest_login">訪客登入</string>
 </resources>
