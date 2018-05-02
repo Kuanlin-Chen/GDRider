@@ -9,4 +9,6 @@
     <string name="title_cart">購物車</string>
     <string name="title_favo">收藏</string>
     <string name="title_seek">搜尋</string>
+    <string name="openDrawer">Open</string>
+    <string name="closeDrawer">Close</string>
 </resources>
