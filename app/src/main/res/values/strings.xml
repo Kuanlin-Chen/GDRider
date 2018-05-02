@@ -5,4 +5,7 @@
 
     <string name="info">請選擇下列登入方式</string>
     <string name="guest_login">訪客登入</string>
+    <string name="one">One</string>
+    <string name="two">Two</string>
+    <string name="three">Three</string>
 </resources>

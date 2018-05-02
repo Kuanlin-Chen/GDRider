@@ -1,5 +1,9 @@
 package com.gdrider.gd;
 
+/**
+ * Created by kuanlin on 2018/5/1.
+ */
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.login_main);
         button_guest_login = (Button)findViewById(R.id.button_guest_login);
         button_fb_login = (LoginButton)findViewById(R.id.button_fb_login);
 
