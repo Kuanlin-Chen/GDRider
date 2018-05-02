@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -25,6 +26,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_main);
         button_guest_login = (Button)findViewById(R.id.button_guest_login);
         button_fb_login = (LoginButton)findViewById(R.id.button_fb_login);
+
+        //check if user has logged in
+        if(AccessToken.getCurrentAccessToken()!=null){
+            startMainPage();
+        }
 
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager,
@@ -49,9 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         button_fb_login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                LoginActivity.this.finish();
+                startMainPage();
             }
 
             @Override
@@ -69,9 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         button_guest_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                LoginActivity.this.finish();
+                startMainPage();
             }
         });
     }
@@ -80,5 +82,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void startMainPage(){
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        LoginActivity.this.finish();
     }
 }
