@@ -19,13 +19,13 @@ import com.gdrider.gd.R;
 import static com.gdrider.gd.MainActivity.KEYCHAR;
 import static com.gdrider.gd.MainActivity.KEYCODE;
 
-public class OneFragment extends Fragment {
+public class MainFragment extends Fragment {
 
     private EditText editText_main;
-    private final String label = "OneFragment:";
+    private final String label = "MainFragment:";
     private final String tag = "KeyCode";
 
-    public OneFragment() {
+    public MainFragment() {
         // Required empty public constructor
     }
 
@@ -41,7 +41,7 @@ public class OneFragment extends Fragment {
         // Inflate the layout for this fragment
         System.out.println(label+"onCreateView");
 
-        View v = inflater.inflate(R.layout.fragment_one, container, false);
+        View v = inflater.inflate(R.layout.fragment_main, container, false);
 
         editText_main = (EditText)v.findViewById(R.id.editText_main);
         editText_main.addTextChangedListener(new TextWatcher() {

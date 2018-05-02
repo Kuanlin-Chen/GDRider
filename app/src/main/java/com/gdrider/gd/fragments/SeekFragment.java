@@ -1,9 +1,5 @@
 package com.gdrider.gd.fragments;
 
-/**
- * Created by kuanlin on 2018/5/2.
- */
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,10 +8,10 @@ import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
 
-public class TwoFragment extends Fragment{
+public class SeekFragment extends Fragment{
 
-    private final String label = "TwoFragment:";
-    public TwoFragment() {
+    private final String label = "SeekFragment:";
+    public SeekFragment() {
         // Required empty public constructor
     }
 
@@ -30,7 +26,6 @@ public class TwoFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         System.out.println(label+"onCreateView");
-        return inflater.inflate(R.layout.fragment_two, container, false);
+        return inflater.inflate(R.layout.fragment_seek, container, false);
     }
-
 }

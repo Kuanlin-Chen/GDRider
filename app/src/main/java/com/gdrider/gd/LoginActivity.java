@@ -1,9 +1,5 @@
 package com.gdrider.gd;
 
-/**
- * Created by kuanlin on 2018/5/1.
- */
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

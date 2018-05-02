@@ -1,9 +1,5 @@
 package com.gdrider.gd;
 
-/**
- * Created by kuanlin on 2018/5/2.
- */
-
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -17,9 +13,10 @@ import android.view.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gdrider.gd.fragments.OneFragment;
-import com.gdrider.gd.fragments.ThreeFragment;
-import com.gdrider.gd.fragments.TwoFragment;
+import com.gdrider.gd.fragments.MainFragment;
+import com.gdrider.gd.fragments.CartFragment;
+import com.gdrider.gd.fragments.FavoFragment;
+import com.gdrider.gd.fragments.SeekFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,9 +47,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "ONE");
-        adapter.addFragment(new TwoFragment(), "TWO");
-        adapter.addFragment(new ThreeFragment(), "THREE");
+        adapter.addFragment(new MainFragment(), getString(R.string.title_main));
+        adapter.addFragment(new CartFragment(), getString(R.string.title_cart));
+        adapter.addFragment(new FavoFragment(), getString(R.string.title_favo));
+        adapter.addFragment(new SeekFragment(), getString(R.string.title_seek));
         viewPager.setAdapter(adapter);
     }
 
