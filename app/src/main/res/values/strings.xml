@@ -9,6 +9,18 @@
     <string name="title_cart">購物車</string>
     <string name="title_favo">收藏</string>
     <string name="title_seek">搜尋</string>
+    <string name="drawer_title">商品分類</string>
+    <string name="item_sol">台灣SOL</string>
+    <string name="item_zeus">台灣ZEUS</string>
+    <string name="item_kyt">台灣KYT</string>
+    <string name="item_thh">台灣THH</string>
+    <string name="item_nikko">台灣Nikko</string>
+    <string name="item_onza">台灣ONZA</string>
+    <string name="drawer_about">關於</string>
+    <string name="item_share">分享App</string>
+    <string name="item_service">商店介紹/客服</string>
+    <string name="item_logout">登出</string>
+
     <string name="openDrawer">Open</string>
     <string name="closeDrawer">Close</string>
 </resources>

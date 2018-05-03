@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="190dp"
+    android:layout_height="70dp"
     android:background="@color/dark_grey">
 
     <TextView
@@ -8,10 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_alignParentBottom="true"
-        android:text="Eddard Stark"
-        android:textSize="14sp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="36dp"
+        android:gravity="center_horizontal"
+        android:text="@string/drawer_title"
+        android:textSize="14dp"
         android:textColor="@color/white"
         android:paddingBottom="8dp"
         />

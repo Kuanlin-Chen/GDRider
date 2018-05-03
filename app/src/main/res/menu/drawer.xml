@@ -1,14 +1,40 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/menu_product"
+        android:checkableBehavior="single">
+
         <item
-            android:id="@+id/navigation_item_1"
-            android:checked="true"
-            android:title="Navigation Items 1"/>
+            android:id="@+id/navigation_item_sol"
+            android:title="@string/item_sol"/>
         <item
-            android:id="@+id/navigation_item_2"
-            android:title="Navigation Items 2"/>
+            android:id="@+id/navigation_item_zeus"
+            android:title="@string/item_zeus"/>
         <item
-            android:id="@+id/navigation_item_3"
-            android:title="Navigation Items 3"/>
+            android:id="@+id/navigation_item_kyt"
+            android:title="@string/item_kyt"/>
+        <item
+            android:id="@+id/navigation_item_thh"
+            android:title="@string/item_thh"/>
+        <item
+            android:id="@+id/navigation_item_nikko"
+            android:title="@string/item_nikko"/>
+        <item
+            android:id="@+id/navigation_item_onza"
+            android:title="@string/item_onza"/>
+    </group>
+
+    <group
+        android:id="@+id/menu_about"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/navigation_item_share"
+            android:title="@string/item_share"/>
+        <item
+            android:id="@+id/navigation_item_service"
+            android:title="@string/item_service"/>
+        <item
+            android:id="@+id/navigation_item_logout"
+            android:title="@string/item_logout"/>
     </group>
 </menu>
