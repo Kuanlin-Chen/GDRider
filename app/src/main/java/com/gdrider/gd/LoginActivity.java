@@ -1,5 +1,6 @@
 package com.gdrider.gd;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,8 +11,11 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+
+import java.util.Arrays;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,21 +37,28 @@ public class LoginActivity extends AppCompatActivity {
             startMainPage();
         }
 
-        // Callback registration
-        button_fb_login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                startMainPage();
-            }
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        startMainPage();
+                    }
 
-            @Override
-            public void onCancel() {
-                // App code
-            }
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
 
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
+
+        button_fb_login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onError(FacebookException exception) {
-                // App code
+            public void onClick(View v) {
+                LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("public_profile"));
             }
         });
 
