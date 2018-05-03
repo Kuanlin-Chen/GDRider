@@ -28,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private DrawerLayout drawerLayout;
     private final String label = "MainActivity:";
-    private final String tag = "KeyCode";
-    public static int KEYCODE = 0;
-    public static char KEYCHAR = 'a';
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,13 +95,5 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-    }
-
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent event){
-        System.out.println(label+(char)event.getUnicodeChar());
-        KEYCHAR = (char)event.getUnicodeChar();
-        KEYCODE = event.getKeyCode();
-        return super.dispatchKeyEvent(event);
     }
 }
