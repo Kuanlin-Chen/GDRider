@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+        setupTabIcons();
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -126,5 +127,12 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+    }
+
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_menu_home);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_menu_home);
+        tabLayout.getTabAt(2).setIcon(R.drawable.ic_menu_home);
+        tabLayout.getTabAt(3).setIcon(R.drawable.ic_menu_home);
     }
 }

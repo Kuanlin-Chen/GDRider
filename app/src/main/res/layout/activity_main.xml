@@ -41,8 +41,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/colorPrimaryDark"
             app:tabTextColor="@color/grey"
-            app:tabSelectedTextColor="@color/white"
-            app:tabIndicatorColor="@color/white"
+            app:tabSelectedTextColor="@color/colorAccent"
             app:tabMode="fixed"
             app:tabGravity="fill"
             app:tabIndicatorHeight="0dp" />
