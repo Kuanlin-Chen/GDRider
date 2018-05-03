@@ -10,7 +10,6 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -27,29 +26,12 @@ public class LoginActivity extends AppCompatActivity {
         button_guest_login = (Button)findViewById(R.id.button_guest_login);
         button_fb_login = (LoginButton)findViewById(R.id.button_fb_login);
 
+        callbackManager = CallbackManager.Factory.create();
+
         //check if user has logged in
         if(AccessToken.getCurrentAccessToken()!=null){
             startMainPage();
         }
-
-        callbackManager = CallbackManager.Factory.create();
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-                    @Override
-                    public void onSuccess(LoginResult loginResult) {
-                        // App code
-                    }
-
-                    @Override
-                    public void onCancel() {
-                        // App code
-                    }
-
-                    @Override
-                    public void onError(FacebookException exception) {
-                        // App code
-                    }
-                });
 
         // Callback registration
         button_fb_login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
