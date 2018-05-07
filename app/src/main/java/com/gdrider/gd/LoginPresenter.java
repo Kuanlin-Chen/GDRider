@@ -57,7 +57,7 @@ public class LoginPresenter implements LoginContract.FBLoginPresenter {
 
         @Override
         public void onError(FacebookException error) {
-
+            view.onFBLoginFail();
         }
     }
 }

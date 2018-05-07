@@ -9,7 +9,7 @@ public interface LoginContract {
 
     interface FBLoginView  {
         void onFBLoginSuccess();
-        void onFBLoginFail(String message);
+        void onFBLoginFail();
     }
 
     interface FBLoginPresenter {

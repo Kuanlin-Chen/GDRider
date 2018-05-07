@@ -1,10 +1,15 @@
 package com.gdrider.gd;
 
 import android.content.Intent;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import com.facebook.AccessToken;
 import com.facebook.login.widget.LoginButton;
 import java.util.Arrays;
@@ -14,13 +19,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.FB
     private Button button_guest_login;
     private LoginButton button_fb_login;
     private LoginPresenter presenter;
+    private LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
+
         button_guest_login = (Button)findViewById(R.id.button_guest_login);
         button_fb_login = (LoginButton)findViewById(R.id.button_fb_login);
+        linearLayout = (LinearLayout)findViewById(R.id.login_linearlayout);
 
         presenter = new LoginPresenter(this);
 
@@ -58,8 +66,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.FB
     }
 
     @Override
-    public void onFBLoginFail(String message) {
-
+    public void onFBLoginFail() {
+        Snackbar.make(linearLayout,getString(R.string.string_login_fail), Snackbar.LENGTH_LONG).setAction("", new View.OnClickListener() {
+            @Override public void onClick(View v) {
+            }
+        }).show();
     }
 
     private void startMainPage(){

@@ -23,4 +23,7 @@
 
     <string name="openDrawer">Open</string>
     <string name="closeDrawer">Close</string>
+
+    <string name="string_login_fail">登入失敗</string>
+    <string name="string_login_success">登入成功</string>
 </resources>
