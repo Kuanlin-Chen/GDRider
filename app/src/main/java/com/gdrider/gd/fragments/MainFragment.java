@@ -55,8 +55,8 @@ public class MainFragment extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         MainPagerAdapter adapter = new MainPagerAdapter(getChildFragmentManager());
-        adapter.addFragment(new NewsFragment(), "News");
-        adapter.addFragment(new EvenFragment(), "Events");
+        adapter.addFragment(new NewsFragment(), getString(R.string.title_news));
+        adapter.addFragment(new EvenFragment(), getString(R.string.title_events));
         viewPager.setAdapter(adapter);
     }
 
