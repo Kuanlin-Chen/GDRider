@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gdrider.gd.CustomViewPager;
 import com.gdrider.gd.R;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.List;
 public class MainFragment extends Fragment {
 
     private View view;
-    private ViewPager viewPager;
+    private CustomViewPager viewPager;
     private TabLayout tabLayout;
     private final String label = "MainFragment:";
 
@@ -40,7 +41,7 @@ public class MainFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_main, container, false);
         super.onCreate(savedInstanceState);
 
-        viewPager = (ViewPager)view.findViewById(R.id.viewpager_main);
+        viewPager = (CustomViewPager)view.findViewById(R.id.viewpager_main);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout)view.findViewById(R.id.tabs_main);
