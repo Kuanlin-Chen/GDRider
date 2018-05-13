@@ -36,7 +36,7 @@ public class NewsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
         ArrayList<String> myDataset = new ArrayList<>();
-        for(int i = 0; i < 50; i++){
+        for(int i = 0; i < 10; i++){
             myDataset.add(i + " SOL 迷彩 消光黑");
         }
         RecyclerAdapter myAdapter = new RecyclerAdapter(myDataset);
