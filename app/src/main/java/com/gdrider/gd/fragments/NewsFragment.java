@@ -16,7 +16,7 @@ import java.util.List;
 
 public class NewsFragment extends Fragment {
 
-    private final String label = "EvenFragment:";
+    private final String label = "NewsFragment:";
     public NewsFragment() {
         // Required empty public constructor
     }
