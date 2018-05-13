@@ -1,4 +1,4 @@
-package com.gdrider.gd;
+package com.gdrider.gd.Custom;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

@@ -1,4 +1,4 @@
-package com.gdrider.gd;
+package com.gdrider.gd.Activity;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
@@ -9,9 +9,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.facebook.login.widget.LoginButton;
+import com.gdrider.gd.Contract.LoginContract;
+import com.gdrider.gd.Presenter.LoginPresenter;
+import com.gdrider.gd.R;
+
 import java.util.Arrays;
 
-public class LoginActivity extends AppCompatActivity implements LoginContract.FBLoginView{
+public class LoginActivity extends AppCompatActivity implements LoginContract.FBLoginView {
 
     private Button button_guest_login;
     private LoginButton button_fb_login;

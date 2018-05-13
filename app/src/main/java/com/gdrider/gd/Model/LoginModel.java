@@ -1,4 +1,4 @@
-package com.gdrider.gd;
+package com.gdrider.gd.Model;
 
 public class LoginModel {
 
