@@ -31,9 +31,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.FB
         presenter = new LoginPresenter(this);
 
         //check if user has logged in
-        if(AccessToken.getCurrentAccessToken()!=null){
-            startMainPage();
-        }
+        presenter.fbIsLoggedIn();
 
         button_fb_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +67,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.FB
             @Override public void onClick(View v) {
             }
         }).show();
+    }
+
+    @Override
+    public void onFBisLoggedIn(){
+        startMainPage();
     }
 
     private void startMainPage(){

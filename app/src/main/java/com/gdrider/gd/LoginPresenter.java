@@ -36,6 +36,14 @@ public class LoginPresenter implements LoginContract.FBLoginPresenter {
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public void fbIsLoggedIn(){
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        if(accessToken != null){
+            view.onFBisLoggedIn();
+        }
+    }
+
     private class Callback implements FacebookCallback<LoginResult> {
 
         public Callback ( ){
@@ -53,6 +61,7 @@ public class LoginPresenter implements LoginContract.FBLoginPresenter {
 
         @Override
         public void onCancel() {
+            view.onFBLoginFail();
         }
 
         @Override
