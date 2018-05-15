@@ -1,4 +1,4 @@
-package com.gdrider.gd.fragments;
+package com.gdrider.gd.Main.Fragments;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gdrider.gd.Custom.CustomViewPager;
+import com.gdrider.gd.Main.Custom.CustomViewPager;
 import com.gdrider.gd.R;
 
 import java.util.ArrayList;

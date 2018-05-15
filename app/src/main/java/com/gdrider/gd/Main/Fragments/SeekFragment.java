@@ -1,4 +1,4 @@
-package com.gdrider.gd.fragments;
+package com.gdrider.gd.Main.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
 
-public class FavoFragment extends Fragment{
+public class SeekFragment extends Fragment{
 
-    private final String label = "FavoFragment:";
-    public FavoFragment() {
+    private final String label = "SeekFragment:";
+    public SeekFragment() {
         // Required empty public constructor
     }
 
@@ -26,8 +26,6 @@ public class FavoFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         System.out.println(label+"onCreateView");
-        return inflater.inflate(R.layout.fragment_favo, container, false);
+        return inflater.inflate(R.layout.fragment_seek, container, false);
     }
-
 }
-

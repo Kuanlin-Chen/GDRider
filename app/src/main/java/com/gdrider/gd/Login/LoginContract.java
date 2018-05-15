@@ -1,4 +1,4 @@
-package com.gdrider.gd.Contract;
+package com.gdrider.gd.Login;
 
 import android.app.Activity;
 import android.content.Intent;

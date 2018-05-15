@@ -1,4 +1,4 @@
-package com.gdrider.gd.fragments;
+package com.gdrider.gd.Main.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

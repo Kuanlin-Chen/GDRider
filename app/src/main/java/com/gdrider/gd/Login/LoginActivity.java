@@ -1,4 +1,4 @@
-package com.gdrider.gd.Activity;
+package com.gdrider.gd.Login;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
@@ -9,8 +9,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.facebook.login.widget.LoginButton;
-import com.gdrider.gd.Contract.LoginContract;
-import com.gdrider.gd.Presenter.LoginPresenter;
+import com.gdrider.gd.Main.Activity.MainActivity;
 import com.gdrider.gd.R;
 
 import java.util.Arrays;

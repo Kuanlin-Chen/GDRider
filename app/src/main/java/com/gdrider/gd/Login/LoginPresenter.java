@@ -1,4 +1,4 @@
-package com.gdrider.gd.Presenter;
+package com.gdrider.gd.Login;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,8 +9,6 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.gdrider.gd.Contract.LoginContract;
-import com.gdrider.gd.Model.LoginModel;
 
 import java.util.Collection;
 
