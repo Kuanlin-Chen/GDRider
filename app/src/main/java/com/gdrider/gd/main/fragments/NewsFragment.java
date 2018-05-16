@@ -10,15 +10,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gdrider.gd.R;
+import com.gdrider.gd.main.contract.NewsContract;
+import com.gdrider.gd.main.presenter.NewsPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsFragment extends Fragment {
+public class NewsFragment extends Fragment implements NewsContract.NewsView{
 
     private final String label = "NewsFragment:";
+    private String text;
+    private NewsPresenter presenter;
+
     public NewsFragment() {
-        // Required empty public constructor
+        //Required empty public constructor
     }
 
     @Override
@@ -30,14 +35,17 @@ public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        //Inflate the layout for this fragment
         System.out.println(label+"onCreateView");
         //return inflater.inflate(R.layout.fragment_news, container, false);
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
+        //get data via presenter
+        presenter = new NewsPresenter(this);
+        presenter.getText();
         ArrayList<String> myDataset = new ArrayList<>();
         for(int i = 0; i < 10; i++){
-            myDataset.add(i + " SOL 迷彩 消光黑");
+            myDataset.add(i + text);
         }
         RecyclerAdapter myAdapter = new RecyclerAdapter(myDataset);
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
@@ -82,5 +90,10 @@ public class NewsFragment extends Fragment {
         public int getItemCount() {
             return mData.size();
         }
+    }
+
+    @Override
+    public void setText(String string){
+        this.text = string;
     }
 }

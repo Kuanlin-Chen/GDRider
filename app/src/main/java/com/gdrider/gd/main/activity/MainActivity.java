@@ -63,12 +63,12 @@ public class MainActivity extends AppCompatActivity {
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        // set item as selected to persist highlight
-                        // close drawer when item is tapped
+                        //set item as selected to persist highlight
+                        //close drawer when item is tapped
                         drawerLayout.closeDrawers();
 
-                        // Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
+                        //Add code here to update the UI based on the item selected
+                        //For example, swap UI fragments here
                         switch (menuItem.getItemId()){
                             case R.id.navigation_item_logout:
                                 LoginManager.getInstance().logOut();
