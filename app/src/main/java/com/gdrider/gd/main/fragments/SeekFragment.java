@@ -1,4 +1,4 @@
-package com.gdrider.gd.Main.Fragments;
+package com.gdrider.gd.main.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
 
-public class CartFragment extends Fragment{
+public class SeekFragment extends Fragment{
 
-    private final String label = "CartFragment:";
-    public CartFragment() {
+    private final String label = "SeekFragment:";
+    public SeekFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +26,6 @@ public class CartFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         System.out.println(label+"onCreateView");
-        return inflater.inflate(R.layout.fragment_cart, container, false);
+        return inflater.inflate(R.layout.fragment_seek, container, false);
     }
-
 }

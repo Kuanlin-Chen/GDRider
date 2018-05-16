@@ -14,7 +14,7 @@
         app:tabGravity="fill"
         app:tabMode="fixed" />
 
-    <com.gdrider.gd.Main.Custom.CustomViewPager
+    <com.gdrider.gd.main.custom.CustomViewPager
         android:id="@+id/viewpager_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

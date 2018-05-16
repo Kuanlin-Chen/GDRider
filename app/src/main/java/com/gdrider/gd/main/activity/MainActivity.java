@@ -1,4 +1,4 @@
-package com.gdrider.gd.Main.Activity;
+package com.gdrider.gd.main.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.facebook.login.LoginManager;
-import com.gdrider.gd.Login.LoginActivity;
-import com.gdrider.gd.Main.Fragments.CartFragment;
-import com.gdrider.gd.Main.Fragments.FavoFragment;
-import com.gdrider.gd.Main.Fragments.MainFragment;
-import com.gdrider.gd.Main.Fragments.SeekFragment;
+import com.gdrider.gd.login.LoginActivity;
+import com.gdrider.gd.main.fragments.CartFragment;
+import com.gdrider.gd.main.fragments.FavoFragment;
+import com.gdrider.gd.main.fragments.MainFragment;
+import com.gdrider.gd.main.fragments.SeekFragment;
 import com.gdrider.gd.R;
 
 public class MainActivity extends AppCompatActivity {

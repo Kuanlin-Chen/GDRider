@@ -1,4 +1,4 @@
-package com.gdrider.gd.Login;
+package com.gdrider.gd.login;
 
 import android.app.Activity;
 import android.content.Intent;
