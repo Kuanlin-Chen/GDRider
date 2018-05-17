@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gdrider.gd.R;
@@ -19,8 +20,11 @@ import java.util.List;
 public class NewsFragment extends Fragment implements NewsContract.NewsView{
 
     private final String label = "NewsFragment:";
-    private String text;
+    private ArrayList<String> productText;
+    private ArrayList<Integer> productImage;
     private NewsPresenter presenter;
+    private RecyclerAdapter recyclerAdapter;
+    private RecyclerView recyclerView;
 
     public NewsFragment() {
         //Required empty public constructor
@@ -43,33 +47,47 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
         //get data via presenter
         presenter = new NewsPresenter(this);
         presenter.getText();
-        ArrayList<String> myDataset = new ArrayList<>();
-        for(int i = 0; i < 10; i++){
-            myDataset.add(i + text);
-        }
-        RecyclerAdapter myAdapter = new RecyclerAdapter(myDataset);
-        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
+        presenter.getImage();
+
+        recyclerAdapter = new RecyclerAdapter(productText, productImage);
+        recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(myAdapter);
+        recyclerView.setAdapter(recyclerAdapter);
 
         return view;
     }
 
+    @Override
+    public void setText(ArrayList<String> productText){
+        this.productText = productText;
+    }
+
+    @Override
+    public void setImage(ArrayList<Integer> productImage){
+        this.productImage = productImage;
+    }
+
     public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-        private List<String> mData;
+        private List<String> mText;
+        private List<Integer> mImage;
+
         public class ViewHolder extends RecyclerView.ViewHolder {
             public TextView mTextView;
+            public ImageView mImageView;
+
             public ViewHolder(View v) {
                 super(v);
                 mTextView = (TextView) v.findViewById(R.id.info_text);
+                mImageView = (ImageView) v.findViewById(R.id.info_img);
             }
         }
 
-        public RecyclerAdapter(List<String> data) {
-            mData = data;
+        public RecyclerAdapter(List<String> text, List<Integer> image) {
+            mText = text;
+            mImage = image;
         }
 
         @Override
@@ -82,18 +100,13 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.mTextView.setText(mData.get(position));
-
+            holder.mTextView.setText(mText.get(position));
+            holder.mImageView.setImageResource(mImage.get(position));
         }
 
         @Override
         public int getItemCount() {
-            return mData.size();
+            return mText.size();
         }
-    }
-
-    @Override
-    public void setText(String string){
-        this.text = string;
     }
 }
