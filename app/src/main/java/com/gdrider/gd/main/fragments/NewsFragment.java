@@ -2,6 +2,7 @@ package com.gdrider.gd.main.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gdrider.gd.R;
 import com.gdrider.gd.main.contract.NewsContract;
@@ -75,13 +77,16 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
         private List<Integer> mImage;
 
         public class ViewHolder extends RecyclerView.ViewHolder {
+
             public TextView mTextView;
             public ImageView mImageView;
+            public CardView mCardView;
 
             public ViewHolder(View v) {
                 super(v);
                 mTextView = (TextView) v.findViewById(R.id.info_text);
                 mImageView = (ImageView) v.findViewById(R.id.info_img);
+                mCardView = (CardView) v.findViewById(R.id.card_view);
             }
         }
 
@@ -99,9 +104,15 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
+        public void onBindViewHolder(ViewHolder holder, final int position) {
             holder.mTextView.setText(mText.get(position));
             holder.mImageView.setImageResource(mImage.get(position));
+            holder.mCardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getActivity(), "CardView:" + position, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         @Override
