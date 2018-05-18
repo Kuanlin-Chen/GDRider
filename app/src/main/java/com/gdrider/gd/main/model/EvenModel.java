@@ -17,14 +17,14 @@ public class EvenModel {
     }
 
     public ArrayList<String> getText(){
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < 5; i++){
             productText.add(i + string);
         }
         return productText;
     }
 
     public ArrayList<Integer> getImage(){
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < 5; i++){
             productImage.add(R.drawable.gdemo_2);
         }
         return productImage;
