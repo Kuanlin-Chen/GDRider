@@ -2,22 +2,18 @@ package com.gdrider.gd.main.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gdrider.gd.R;
 import com.gdrider.gd.main.contract.NewsContract;
+import com.gdrider.gd.main.custom.RecyclerAdapter;
 import com.gdrider.gd.main.presenter.NewsPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class NewsFragment extends Fragment implements NewsContract.NewsView{
 
@@ -51,7 +47,7 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
         presenter.getText();
         presenter.getImage();
 
-        recyclerAdapter = new RecyclerAdapter(productText, productImage);
+        recyclerAdapter = new RecyclerAdapter(productText, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),2);
@@ -71,53 +67,4 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
         this.productImage = productImage;
     }
 
-    public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-
-        private List<String> mText;
-        private List<Integer> mImage;
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-
-            public TextView mTextView;
-            public ImageView mImageView;
-            public CardView mCardView;
-
-            public ViewHolder(View v) {
-                super(v);
-                mTextView = (TextView) v.findViewById(R.id.info_text);
-                mImageView = (ImageView) v.findViewById(R.id.info_img);
-                mCardView = (CardView) v.findViewById(R.id.card_view);
-            }
-        }
-
-        public RecyclerAdapter(List<String> text, List<Integer> image) {
-            mText = text;
-            mImage = image;
-        }
-
-        @Override
-        public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item, parent, false);
-            ViewHolder vh = new ViewHolder(v);
-            return vh;
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, final int position) {
-            holder.mTextView.setText(mText.get(position));
-            holder.mImageView.setImageResource(mImage.get(position));
-            holder.mCardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(getActivity(), "CardView:" + position, Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return mText.size();
-        }
-    }
 }
