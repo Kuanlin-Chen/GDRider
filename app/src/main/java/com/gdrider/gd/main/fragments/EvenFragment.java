@@ -7,10 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
+import com.gdrider.gd.main.contract.EvenContract;
+import com.gdrider.gd.main.presenter.EvenPresenter;
 
-public class EvenFragment extends Fragment {
+import java.util.ArrayList;
+
+public class EvenFragment extends Fragment implements EvenContract.EvenView{
 
     private final String label = "EvenFragment:";
+    private ArrayList<String> productText;
+    private ArrayList<Integer> productImage;
+    private EvenPresenter presenter;
+
     public EvenFragment() {
         // Required empty public constructor
     }
@@ -26,6 +34,23 @@ public class EvenFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         System.out.println(label+"onCreateView");
-        return inflater.inflate(R.layout.fragment_even, container, false);
+        View view = inflater.inflate(R.layout.fragment_even, container, false);
+
+        //get data via presenter
+        presenter = new EvenPresenter(this);
+        presenter.getText();
+        presenter.getImage();
+
+        return view;
+    }
+
+    @Override
+    public void setText(ArrayList<String> productText){
+        this.productText = productText;
+    }
+
+    @Override
+    public void setImage(ArrayList<Integer> productImage){
+        this.productImage = productImage;
     }
 }

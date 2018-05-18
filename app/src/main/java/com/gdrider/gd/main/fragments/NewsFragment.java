@@ -39,7 +39,6 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
                              Bundle savedInstanceState) {
         //Inflate the layout for this fragment
         System.out.println(label+"onCreateView");
-        //return inflater.inflate(R.layout.fragment_news, container, false);
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
         //get data via presenter
