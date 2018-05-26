@@ -2,15 +2,28 @@ package com.gdrider.gd.main.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
+import com.gdrider.gd.main.contract.CartContract;
+import com.gdrider.gd.main.custom.RecyclerAdapter;
+import com.gdrider.gd.main.presenter.CartPresenter;
 
-public class CartFragment extends Fragment{
+import java.util.ArrayList;
+
+public class CartFragment extends Fragment implements CartContract.CartView{
 
     private final String label = "CartFragment:";
+    private ArrayList<String> productText;
+    private ArrayList<Integer> productImage;
+    private CartPresenter presenter;
+    private RecyclerAdapter recyclerAdapter;
+    private RecyclerView recyclerView;
+
     public CartFragment() {
         // Required empty public constructor
     }
@@ -26,7 +39,30 @@ public class CartFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         System.out.println(label+"onCreateView");
-        return inflater.inflate(R.layout.fragment_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_cart, container, false);
+
+        //get data via presenter
+        presenter = new CartPresenter(this);
+        presenter.getText();
+        presenter.getImage();
+
+        recyclerAdapter = new RecyclerAdapter(productText, productImage, getActivity());
+        recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
+
+        GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),1);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(recyclerAdapter);
+
+        return view;
     }
 
+    @Override
+    public void setText(ArrayList<String> productText){
+        this.productText = productText;
+    }
+
+    @Override
+    public void setImage(ArrayList<Integer> productImage){
+        this.productImage = productImage;
+    }
 }
