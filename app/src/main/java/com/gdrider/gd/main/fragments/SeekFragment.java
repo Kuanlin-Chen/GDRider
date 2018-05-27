@@ -2,10 +2,12 @@ package com.gdrider.gd.main.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.gdrider.gd.R;
 import com.gdrider.gd.main.contract.SeekContract;
@@ -40,6 +42,28 @@ public class SeekFragment extends Fragment implements SeekContract.SeekView{
         searchView.setIconifiedByDefault(false);
         searchView.onActionViewExpanded();
         searchView.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(getActivity(), "Search:" + query, Toast.LENGTH_SHORT).show();
+
+                //Hide the keyboard after user submit text
+                if (searchView != null) {
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+                    if (imm != null) {
+                        imm.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
+                    }
+                    searchView.clearFocus(); // 不获取焦点
+                }
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         return view;
     }
