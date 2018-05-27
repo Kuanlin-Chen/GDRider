@@ -2,6 +2,7 @@ package com.gdrider.gd.main.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ public class SeekFragment extends Fragment implements SeekContract.SeekView{
     private final String label = "SeekFragment:";
     private ArrayList<String> productText;
     private ArrayList<Integer> productImage;
+    private SearchView searchView;
 
     public SeekFragment() {
         // Required empty public constructor
@@ -32,7 +34,14 @@ public class SeekFragment extends Fragment implements SeekContract.SeekView{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         System.out.println(label+"onCreateView");
-        return inflater.inflate(R.layout.fragment_seek, container, false);
+        View view = inflater.inflate(R.layout.fragment_seek, container, false);
+
+        searchView = (SearchView)view.findViewById(R.id.searchview);
+        searchView.setIconifiedByDefault(false);
+        searchView.onActionViewExpanded();
+        searchView.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
+
+        return view;
     }
 
     @Override
