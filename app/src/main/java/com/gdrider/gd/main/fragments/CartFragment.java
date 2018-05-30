@@ -18,7 +18,9 @@ import java.util.ArrayList;
 public class CartFragment extends Fragment implements CartContract.CartView{
 
     private final String label = "CartFragment:";
-    private ArrayList<String> productText;
+    private ArrayList<String> productTitle;
+    private ArrayList<String> productColor;
+    private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
     private CartPresenter presenter;
     private RecyclerAdapter recyclerAdapter;
@@ -43,10 +45,12 @@ public class CartFragment extends Fragment implements CartContract.CartView{
 
         //get data via presenter
         presenter = new CartPresenter(this);
-        presenter.getText();
+        presenter.getTitle();
+        presenter.getColor();
+        presenter.getPrice();
         presenter.getImage();
 
-        recyclerAdapter = new RecyclerAdapter(productText, productImage, getActivity());
+        recyclerAdapter = new RecyclerAdapter(productTitle, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),1);
@@ -57,8 +61,18 @@ public class CartFragment extends Fragment implements CartContract.CartView{
     }
 
     @Override
-    public void setText(ArrayList<String> productText){
-        this.productText = productText;
+    public void setTitle(ArrayList<String> productTitle){
+        this.productTitle = productTitle;
+    }
+
+    @Override
+    public void setColor(ArrayList<String> productColor){
+        this.productColor = productColor;
+    }
+
+    @Override
+    public void setPrice(ArrayList<Integer> productPrice){
+        this.productPrice = productPrice;
     }
 
     @Override

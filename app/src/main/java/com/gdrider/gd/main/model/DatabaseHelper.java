@@ -56,6 +56,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res_title;
     }
 
+    public Cursor getAllColor() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res_color = db.rawQuery("select "+COL_COLOR+" from "+TABLE_NAME, null);
+        return res_color;
+    }
+
+    public Cursor getAllPrice() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res_price = db.rawQuery("select "+COL_PRICE+" from "+TABLE_NAME, null);
+        return res_price;
+    }
+
     public Cursor getPrice(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res_price = db.rawQuery("select "+COL_PRICE+" from "+TABLE_NAME+" where "+COL_TITLE+" like '"+title+"'", null);

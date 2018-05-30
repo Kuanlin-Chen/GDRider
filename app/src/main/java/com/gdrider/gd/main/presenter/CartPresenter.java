@@ -14,8 +14,18 @@ public class CartPresenter implements CartContract.CartPresenter{
     }
 
     @Override
-    public void getText() {
-        view.setText(model.getText());
+    public void getTitle() {
+        view.setTitle(model.getTitle());
+    }
+
+    @Override
+    public void getColor() {
+        view.setColor(model.getColor());
+    }
+
+    @Override
+    public void getPrice() {
+        view.setPrice(model.getPrice());
     }
 
     @Override

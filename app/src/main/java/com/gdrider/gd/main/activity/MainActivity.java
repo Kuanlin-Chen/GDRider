@@ -25,6 +25,7 @@ import com.gdrider.gd.main.fragments.FavoFragment;
 import com.gdrider.gd.main.fragments.MainFragment;
 import com.gdrider.gd.main.fragments.SeekFragment;
 import com.gdrider.gd.R;
+import com.gdrider.gd.main.model.DataBase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Initial Database
+        DataBase.getInstance().initDB(this);
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         toolbar = (Toolbar)findViewById(R.id.toolbar);

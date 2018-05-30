@@ -5,12 +5,16 @@ import java.util.ArrayList;
 public interface CartContract {
 
     interface CartView{
-        void setText(ArrayList<String> productText);
+        void setTitle(ArrayList<String> productTitle);
+        void setColor(ArrayList<String> productColor);
+        void setPrice(ArrayList<Integer> productPrice);
         void setImage(ArrayList<Integer> productImage);
     }
 
     interface CartPresenter{
-        void getText();
+        void getTitle();
+        void getColor();
+        void getPrice();
         void getImage();
     }
 }
