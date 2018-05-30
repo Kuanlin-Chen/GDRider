@@ -42,6 +42,7 @@ public class SeekFragment extends Fragment implements SeekContract.SeekView{
         searchView.setIconifiedByDefault(false);
         searchView.onActionViewExpanded();
         searchView.setBackgroundColor(getActivity().getResources().getColor(R.color.grey));
+        searchView.clearFocus();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -53,7 +54,7 @@ public class SeekFragment extends Fragment implements SeekContract.SeekView{
                     if (imm != null) {
                         imm.hideSoftInputFromWindow(searchView.getWindowToken(), 0);
                     }
-                    searchView.clearFocus(); // 不获取焦点
+                    searchView.clearFocus();
                 }
 
                 return true;
