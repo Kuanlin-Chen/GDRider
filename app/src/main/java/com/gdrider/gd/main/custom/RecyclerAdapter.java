@@ -16,7 +16,9 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    private List<String> mText;
+    private List<String> mTitle;
+    private List<String> mColor;
+    private List<Integer> mPrice;
     private List<Integer> mImage;
     private Context context;
 
@@ -34,8 +36,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
     }
 
-    public RecyclerAdapter(List<String> text, List<Integer> image, Context context) {
-        this.mText = text;
+    public RecyclerAdapter(List<String> title, List<String> color, List<Integer> price, List<Integer> image, Context context) {
+        this.mTitle = title;
+        this.mColor = color;
+        this.mPrice = price;
         this.mImage = image;
         this.context = context;
     }
@@ -50,7 +54,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, final int position) {
-        holder.mTextView.setText(mText.get(position));
+        holder.mTextView.setText(mTitle.get(position)); //" "+mColor.get(position)+" "+mPrice.get(position)
         holder.mImageView.setImageResource(mImage.get(position));
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +66,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return mText.size();
+        return mTitle.size();
     }
 }

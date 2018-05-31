@@ -18,7 +18,9 @@ import java.util.ArrayList;
 public class FavoFragment extends Fragment implements FavoContract.FavoView{
 
     private final String label = "FavoFragment:";
-    private ArrayList<String> productText;
+    private ArrayList<String> productTitle;
+    private ArrayList<String> productColor;
+    private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
     private FavoPresenter presenter;
     private RecyclerAdapter recyclerAdapter;
@@ -46,7 +48,7 @@ public class FavoFragment extends Fragment implements FavoContract.FavoView{
         presenter.getText();
         presenter.getImage();
 
-        recyclerAdapter = new RecyclerAdapter(productText, productImage, getActivity());
+        recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),1);
@@ -58,7 +60,7 @@ public class FavoFragment extends Fragment implements FavoContract.FavoView{
 
     @Override
     public void setText(ArrayList<String> productText){
-        this.productText = productText;
+        this.productTitle = productText;
     }
 
     @Override

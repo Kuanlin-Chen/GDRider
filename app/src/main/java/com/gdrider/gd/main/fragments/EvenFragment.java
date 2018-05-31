@@ -18,7 +18,9 @@ import java.util.ArrayList;
 public class EvenFragment extends Fragment implements EvenContract.EvenView{
 
     private final String label = "EvenFragment:";
-    private ArrayList<String> productText;
+    private ArrayList<String> productTitle;
+    private ArrayList<String> productColor;
+    private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
     private EvenPresenter presenter;
     private RecyclerAdapter recyclerAdapter;
@@ -46,7 +48,7 @@ public class EvenFragment extends Fragment implements EvenContract.EvenView{
         presenter.getText();
         presenter.getImage();
 
-        recyclerAdapter = new RecyclerAdapter(productText, productImage, getActivity());
+        recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),1);
@@ -58,7 +60,7 @@ public class EvenFragment extends Fragment implements EvenContract.EvenView{
 
     @Override
     public void setText(ArrayList<String> productText){
-        this.productText = productText;
+        this.productTitle = productText;
     }
 
     @Override

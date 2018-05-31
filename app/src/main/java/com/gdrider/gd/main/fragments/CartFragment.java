@@ -50,7 +50,7 @@ public class CartFragment extends Fragment implements CartContract.CartView{
         presenter.getPrice();
         presenter.getImage();
 
-        recyclerAdapter = new RecyclerAdapter(productTitle, productImage, getActivity());
+        recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),1);

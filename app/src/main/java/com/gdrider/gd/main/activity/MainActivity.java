@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Initial Database
         DataBase.getInstance().initDB(this);
+        //Debug
+        //DataBase.getInstance().getDB().insertData("1", "全罩式安全帽", "黑", 2700, R.drawable.gdemo_2);
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         toolbar = (Toolbar)findViewById(R.id.toolbar);

@@ -18,7 +18,9 @@ import java.util.ArrayList;
 public class NewsFragment extends Fragment implements NewsContract.NewsView{
 
     private final String label = "NewsFragment:";
-    private ArrayList<String> productText;
+    private ArrayList<String> productTitle;
+    private ArrayList<String> productColor;
+    private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
     private NewsPresenter presenter;
     private RecyclerAdapter recyclerAdapter;
@@ -46,7 +48,7 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
         presenter.getText();
         presenter.getImage();
 
-        recyclerAdapter = new RecyclerAdapter(productText, productImage, getActivity());
+        recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),2);
@@ -58,7 +60,7 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
 
     @Override
     public void setText(ArrayList<String> productText){
-        this.productText = productText;
+        this.productTitle = productText;
     }
 
     @Override

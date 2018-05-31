@@ -14,6 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_TITLE = "TITLE";
     public static final String COL_COLOR = "COLOR";
     public static final String COL_PRICE = "PRICE";
+    public static final String COL_IMAGE = "IMAGE";
 
     //Constructor
     public DatabaseHelper(Context context) {
@@ -22,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void onCreate(SQLiteDatabase db) {
         //"create table這裡要空一格" "空一格(ID INTEGER......)"
-        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, TITLE TEXT, COLOR TEXT, PRICE REAL)");
+        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, TITLE TEXT, COLOR TEXT, PRICE REAL, IMAGE INTEGER)");
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -30,13 +31,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String id, String title, String color, double price) {
+    public boolean insertData(String id, String title, String color, double price, int image) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         //contentValues.put(COL_ID, id);
         contentValues.put(COL_TITLE, title);
         contentValues.put(COL_COLOR, color);
         contentValues.put(COL_PRICE, price);
+        contentValues.put(COL_IMAGE, image);
         long result = db.insert(TABLE_NAME, null, contentValues);
         if(result == -1)
             return false;
@@ -68,6 +70,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res_price;
     }
 
+    public Cursor getAllImage() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res_image = db.rawQuery("select "+COL_IMAGE+" from "+TABLE_NAME, null);
+        return res_image;
+    }
+
     public Cursor getPrice(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res_price = db.rawQuery("select "+COL_PRICE+" from "+TABLE_NAME+" where "+COL_TITLE+" like '"+title+"'", null);
@@ -86,13 +94,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res_count;
     }
 
-    public boolean updateData(String id, String title, String color, double price) {
+    public boolean updateData(String id, String title, String color, double price, int image) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         //contentValues.put(COL_ID, id);
         contentValues.put(COL_TITLE, title);
         contentValues.put(COL_COLOR, color);
         contentValues.put(COL_PRICE, price);
+        contentValues.put(COL_IMAGE, image);
         db.update(TABLE_NAME, contentValues, "ID = ?", new String[] { id });
         return true;
     }
