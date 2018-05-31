@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.gdrider.gd.R;
 import com.gdrider.gd.main.contract.Contract;
 import com.gdrider.gd.main.custom.RecyclerAdapter;
-import com.gdrider.gd.main.presenter.NewsPresenter;
+import com.gdrider.gd.main.presenter.Presenter;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ public class NewsFragment extends Fragment implements Contract.View{
     private ArrayList<String> productColor;
     private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
-    private NewsPresenter presenter;
+    private Presenter presenter;
     private RecyclerAdapter recyclerAdapter;
     private RecyclerView recyclerView;
 
@@ -44,7 +44,7 @@ public class NewsFragment extends Fragment implements Contract.View{
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
         //get data via presenter
-        presenter = new NewsPresenter(this);
+        presenter = new Presenter(this);
         presenter.getTitle();
         presenter.getColor();
         presenter.getPrice();

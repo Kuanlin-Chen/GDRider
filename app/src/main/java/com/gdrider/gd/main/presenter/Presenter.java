@@ -3,12 +3,12 @@ package com.gdrider.gd.main.presenter;
 import com.gdrider.gd.main.contract.Contract;
 import com.gdrider.gd.main.model.RemoteServer;
 
-public class NewsPresenter implements Contract.Presenter {
+public class Presenter implements Contract.Presenter {
 
     private Contract.View view;
     private RemoteServer remoteServer;
 
-    public NewsPresenter(Contract.View view) {
+    public Presenter(Contract.View view) {
         this.view = view;
         this.remoteServer = new RemoteServer();
     }
