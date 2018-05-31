@@ -15,6 +15,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_COLOR = "COLOR";
     public static final String COL_PRICE = "PRICE";
     public static final String COL_IMAGE = "IMAGE";
+    public static final String COL_FAVO = "FAVO";
+    public static final String COL_CART = "CART";
 
     //Constructor
     public DatabaseHelper(Context context) {
@@ -23,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void onCreate(SQLiteDatabase db) {
         //"create table這裡要空一格" "空一格(ID INTEGER......)"
-        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, TITLE TEXT, COLOR TEXT, PRICE REAL, IMAGE INTEGER)");
+        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, TITLE TEXT, COLOR TEXT, PRICE REAL, IMAGE INTEGER, FAVO INTEGER DEFAULT 0, CART INTEGER DEFAULT 0)");
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -31,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String id, String title, String color, double price, int image) {
+    public boolean insertData(String id, String title, String color, int price, int image, int favo, int cart) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         //contentValues.put(COL_ID, id);
@@ -39,6 +41,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_COLOR, color);
         contentValues.put(COL_PRICE, price);
         contentValues.put(COL_IMAGE, image);
+        contentValues.put(COL_FAVO, favo);
+        contentValues.put(COL_CART, cart);
         long result = db.insert(TABLE_NAME, null, contentValues);
         if(result == -1)
             return false;
@@ -94,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res_count;
     }
 
-    public boolean updateData(String id, String title, String color, double price, int image) {
+    public boolean updateData(String id, String title, String color, int price, int image, int favo, int cart) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         //contentValues.put(COL_ID, id);
@@ -102,6 +106,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_COLOR, color);
         contentValues.put(COL_PRICE, price);
         contentValues.put(COL_IMAGE, image);
+        contentValues.put(COL_FAVO, favo);
+        contentValues.put(COL_CART, cart);
         db.update(TABLE_NAME, contentValues, "ID = ?", new String[] { id });
         return true;
     }

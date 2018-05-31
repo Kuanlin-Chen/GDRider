@@ -42,11 +42,13 @@ public class MainActivity extends AppCompatActivity {
 
         //Initial Database
         DataBase.getInstance().initDB(this);
-        //Debug
-        //DataBase.getInstance().getDB().insertData("1", "全罩式安全帽", "黑", 2700, R.drawable.gdemo);
-        //DataBase.getInstance().getDB().insertData("2", "半罩式安全帽", "白", 2000, R.drawable.gdemo);
-        //DataBase.getInstance().getDB().insertData("3", "全罩式安全帽", "藍", 2500, R.drawable.gdemo);
-        //DataBase.getInstance().getDB().insertData("4", "半罩式安全帽", "紅", 2600, R.drawable.gdemo);
+        //Just for testing
+        if(DataBase.getInstance().getDB().getAllData().getCount()==0){
+            DataBase.getInstance().getDB().insertData("1", "全罩式安全帽", "黑", 2700, R.drawable.gdemo, 0, 0);
+            DataBase.getInstance().getDB().insertData("2", "半罩式安全帽", "白", 2000, R.drawable.gdemo, 0, 0);
+            DataBase.getInstance().getDB().insertData("3", "全罩式安全帽", "藍", 2500, R.drawable.gdemo, 0, 0);
+            DataBase.getInstance().getDB().insertData("4", "半罩式安全帽", "紅", 2600, R.drawable.gdemo, 0, 0);
+        }
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         toolbar = (Toolbar)findViewById(R.id.toolbar);

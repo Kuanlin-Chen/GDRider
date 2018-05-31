@@ -5,12 +5,10 @@ import java.util.ArrayList;
 public interface FavoContract {
 
     interface FavoView{
-        void setText(ArrayList<String> productText);
-        void setImage(ArrayList<Integer> productImage);
+        void setAllFavo(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image);
     }
 
     interface FavoPresenter{
-        void getText();
-        void getImage();
+        void getAllFavo();
     }
 }

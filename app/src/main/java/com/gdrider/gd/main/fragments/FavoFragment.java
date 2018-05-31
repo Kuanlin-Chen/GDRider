@@ -45,8 +45,7 @@ public class FavoFragment extends Fragment implements FavoContract.FavoView{
 
         //get data via presenter
         presenter = new FavoPresenter(this);
-        presenter.getText();
-        presenter.getImage();
+        presenter.getAllFavo();
 
         recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
@@ -59,13 +58,11 @@ public class FavoFragment extends Fragment implements FavoContract.FavoView{
     }
 
     @Override
-    public void setText(ArrayList<String> productText){
-        this.productTitle = productText;
-    }
-
-    @Override
-    public void setImage(ArrayList<Integer> productImage){
-        this.productImage = productImage;
+    public void setAllFavo(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+        this.productTitle = title;
+        this.productColor = color;
+        this.productPrice = price;
+        this.productImage = image;
     }
 
 }
