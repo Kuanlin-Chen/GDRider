@@ -60,6 +60,7 @@ public class CartModel {
         Cursor cursor = DataBase.getInstance().getDB().getAllData();
         int count = cursor.getCount();
         for(int i = 0; i < count; i++){
+            //test
             productImage.add(R.drawable.gdemo_2);
         }
         return productImage;
