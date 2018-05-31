@@ -9,20 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
-import com.gdrider.gd.main.contract.Contract;
+import com.gdrider.gd.main.contract.EvenContract;
 import com.gdrider.gd.main.custom.RecyclerAdapter;
 import com.gdrider.gd.main.presenter.EvenPresenter;
 
 import java.util.ArrayList;
 
-public class EvenFragment extends Fragment implements Contract.View{
+public class EvenFragment extends Fragment implements EvenContract.EvenView{
 
     private final String label = "EvenFragment:";
     private ArrayList<String> productTitle;
     private ArrayList<String> productColor;
     private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
-    private EvenPresenter presenter;
+    private EvenContract.EvenPresenter presenter;
     private RecyclerAdapter recyclerAdapter;
     private RecyclerView recyclerView;
 
@@ -45,10 +45,7 @@ public class EvenFragment extends Fragment implements Contract.View{
 
         //get data via presenter
         presenter = new EvenPresenter(this);
-        presenter.getTitle();
-        presenter.getColor();
-        presenter.getPrice();
-        presenter.getImage();
+        presenter.getNewEvent();
 
         recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
@@ -61,22 +58,10 @@ public class EvenFragment extends Fragment implements Contract.View{
     }
 
     @Override
-    public void setTitle(ArrayList<String> productTitle){
-        this.productTitle = productTitle;
-    }
-
-    @Override
-    public void setColor(ArrayList<String> productColor){
-        this.productColor = productColor;
-    }
-
-    @Override
-    public void setPrice(ArrayList<Integer> productPrice){
-        this.productPrice = productPrice;
-    }
-
-    @Override
-    public void setImage(ArrayList<Integer> productImage){
-        this.productImage = productImage;
+    public void setNewEvent(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+        this.productTitle = title;
+        this.productColor = color;
+        this.productPrice = price;
+        this.productImage = image;
     }
 }

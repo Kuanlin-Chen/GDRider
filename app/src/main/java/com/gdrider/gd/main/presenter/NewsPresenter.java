@@ -2,20 +2,20 @@ package com.gdrider.gd.main.presenter;
 
 import android.database.Cursor;
 
-import com.gdrider.gd.main.contract.EvenContract;
+import com.gdrider.gd.main.contract.NewsContract;
 import com.gdrider.gd.main.model.DataBase;
 
 import java.util.ArrayList;
 
-public class EvenPresenter implements EvenContract.EvenPresenter{
+public class NewsPresenter implements NewsContract.NewsPresenter {
 
-    private EvenContract.EvenView view;
+    private NewsContract.NewsView view;
     private ArrayList<String> title;
     private ArrayList<String> color;
     private ArrayList<Integer> price;
     private ArrayList<Integer> image;
 
-    public EvenPresenter(EvenContract.EvenView view) {
+    public NewsPresenter(NewsContract.NewsView view) {
         this.view = view;
         this.title = new ArrayList<>();
         this.color = new ArrayList<>();
@@ -24,7 +24,7 @@ public class EvenPresenter implements EvenContract.EvenPresenter{
     }
 
     @Override
-    public void getNewEvent() {
+    public void getAllData(){
         Cursor cursor = DataBase.getInstance().getDB().getAllData();
         if(cursor.getCount()!=0)cursor.moveToFirst();
         for(int i = 0; i < cursor.getCount(); i++){
@@ -34,6 +34,6 @@ public class EvenPresenter implements EvenContract.EvenPresenter{
             image.add(cursor.getInt(4));
             cursor.moveToNext();
         }
-        view.setNewEvent(title, color, price, image);
+        view.setAllData(title, color, price, image);
     }
 }

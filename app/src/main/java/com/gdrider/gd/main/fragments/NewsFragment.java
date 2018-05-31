@@ -9,20 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
-import com.gdrider.gd.main.contract.Contract;
+import com.gdrider.gd.main.contract.NewsContract;
 import com.gdrider.gd.main.custom.RecyclerAdapter;
-import com.gdrider.gd.main.presenter.Presenter;
+import com.gdrider.gd.main.presenter.NewsPresenter;
 
 import java.util.ArrayList;
 
-public class NewsFragment extends Fragment implements Contract.View{
+public class NewsFragment extends Fragment implements NewsContract.NewsView{
 
     private final String label = "NewsFragment:";
     private ArrayList<String> productTitle;
     private ArrayList<String> productColor;
     private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
-    private Presenter presenter;
+    private NewsContract.NewsPresenter presenter;
     private RecyclerAdapter recyclerAdapter;
     private RecyclerView recyclerView;
 
@@ -44,11 +44,8 @@ public class NewsFragment extends Fragment implements Contract.View{
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
         //get data via presenter
-        presenter = new Presenter(this);
-        presenter.getTitle();
-        presenter.getColor();
-        presenter.getPrice();
-        presenter.getImage();
+        presenter = new NewsPresenter(this);
+        presenter.getAllData();
 
         recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
@@ -61,23 +58,10 @@ public class NewsFragment extends Fragment implements Contract.View{
     }
 
     @Override
-    public void setTitle(ArrayList<String> productTitle){
-        this.productTitle = productTitle;
+    public void setAllData(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+        this.productTitle = title;
+        this.productColor = color;
+        this.productPrice = price;
+        this.productImage = image;
     }
-
-    @Override
-    public void setColor(ArrayList<String> productColor){
-        this.productColor = productColor;
-    }
-
-    @Override
-    public void setPrice(ArrayList<Integer> productPrice){
-        this.productPrice = productPrice;
-    }
-
-    @Override
-    public void setImage(ArrayList<Integer> productImage){
-        this.productImage = productImage;
-    }
-
 }

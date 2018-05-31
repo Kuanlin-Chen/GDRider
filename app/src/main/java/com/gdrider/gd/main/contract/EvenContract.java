@@ -5,12 +5,10 @@ import java.util.ArrayList;
 public interface EvenContract {
 
     interface EvenView{
-        void setText(ArrayList<String> productText);
-        void setImage(ArrayList<Integer> productImage);
+        void setNewEvent(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image);
     }
 
     interface EvenPresenter{
-        void getText();
-        void getImage();
+        void getNewEvent();
     }
 }
