@@ -45,7 +45,9 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
 
         //get data via presenter
         presenter = new NewsPresenter(this);
-        presenter.getText();
+        presenter.getTitle();
+        presenter.getColor();
+        presenter.getPrice();
         presenter.getImage();
 
         recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
@@ -59,8 +61,18 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
     }
 
     @Override
-    public void setText(ArrayList<String> productText){
-        this.productTitle = productText;
+    public void setTitle(ArrayList<String> productTitle){
+        this.productTitle = productTitle;
+    }
+
+    @Override
+    public void setColor(ArrayList<String> productColor){
+        this.productColor = productColor;
+    }
+
+    @Override
+    public void setPrice(ArrayList<Integer> productPrice){
+        this.productPrice = productPrice;
     }
 
     @Override
