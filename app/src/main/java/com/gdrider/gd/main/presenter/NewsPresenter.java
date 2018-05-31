@@ -1,14 +1,14 @@
 package com.gdrider.gd.main.presenter;
 
-import com.gdrider.gd.main.contract.NewsContract;
+import com.gdrider.gd.main.contract.Contract;
 import com.gdrider.gd.main.model.RemoteServer;
 
-public class NewsPresenter implements NewsContract.NewsPresenter {
+public class NewsPresenter implements Contract.Presenter {
 
-    private NewsContract.NewsView view;
+    private Contract.View view;
     private RemoteServer remoteServer;
 
-    public NewsPresenter(NewsContract.NewsView view) {
+    public NewsPresenter(Contract.View view) {
         this.view = view;
         this.remoteServer = new RemoteServer();
     }

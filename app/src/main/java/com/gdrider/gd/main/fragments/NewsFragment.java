@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
-import com.gdrider.gd.main.contract.NewsContract;
+import com.gdrider.gd.main.contract.Contract;
 import com.gdrider.gd.main.custom.RecyclerAdapter;
 import com.gdrider.gd.main.presenter.NewsPresenter;
 
 import java.util.ArrayList;
 
-public class NewsFragment extends Fragment implements NewsContract.NewsView{
+public class NewsFragment extends Fragment implements Contract.View{
 
     private final String label = "NewsFragment:";
     private ArrayList<String> productTitle;

@@ -1,25 +1,35 @@
 package com.gdrider.gd.main.presenter;
 
-import com.gdrider.gd.main.contract.EvenContract;
-import com.gdrider.gd.main.model.EvenModel;
+import com.gdrider.gd.main.contract.Contract;
+import com.gdrider.gd.main.model.RemoteServer;
 
-public class EvenPresenter implements EvenContract.EvenPresenter{
+public class EvenPresenter implements Contract.Presenter{
 
-    private EvenContract.EvenView view;
-    private EvenModel model;
+    private Contract.View view;
+    private RemoteServer remoteServer;
 
-    public EvenPresenter(EvenContract.EvenView view) {
+    public EvenPresenter(Contract.View view) {
         this.view = view;
-        this.model = new EvenModel();
+        this.remoteServer = new RemoteServer();
     }
 
     @Override
-    public void getText() {
-        view.setText(model.getText());
+    public void getTitle() {
+        view.setTitle(remoteServer.getTitle());
+    }
+
+    @Override
+    public void getColor() {
+        view.setColor(remoteServer.getColor());
+    }
+
+    @Override
+    public void getPrice() {
+        view.setPrice(remoteServer.getPrice());
     }
 
     @Override
     public void getImage(){
-        view.setImage(model.getImage());
+        view.setImage(remoteServer.getImage());
     }
 }

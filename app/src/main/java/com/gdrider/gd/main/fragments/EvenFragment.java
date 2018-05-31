@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
-import com.gdrider.gd.main.contract.EvenContract;
+import com.gdrider.gd.main.contract.Contract;
 import com.gdrider.gd.main.custom.RecyclerAdapter;
 import com.gdrider.gd.main.presenter.EvenPresenter;
 
 import java.util.ArrayList;
 
-public class EvenFragment extends Fragment implements EvenContract.EvenView{
+public class EvenFragment extends Fragment implements Contract.View{
 
     private final String label = "EvenFragment:";
     private ArrayList<String> productTitle;
@@ -45,7 +45,9 @@ public class EvenFragment extends Fragment implements EvenContract.EvenView{
 
         //get data via presenter
         presenter = new EvenPresenter(this);
-        presenter.getText();
+        presenter.getTitle();
+        presenter.getColor();
+        presenter.getPrice();
         presenter.getImage();
 
         recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
@@ -59,8 +61,18 @@ public class EvenFragment extends Fragment implements EvenContract.EvenView{
     }
 
     @Override
-    public void setText(ArrayList<String> productText){
-        this.productTitle = productText;
+    public void setTitle(ArrayList<String> productTitle){
+        this.productTitle = productTitle;
+    }
+
+    @Override
+    public void setColor(ArrayList<String> productColor){
+        this.productColor = productColor;
+    }
+
+    @Override
+    public void setPrice(ArrayList<Integer> productPrice){
+        this.productPrice = productPrice;
     }
 
     @Override
