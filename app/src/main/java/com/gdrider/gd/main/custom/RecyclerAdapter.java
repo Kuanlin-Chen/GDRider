@@ -6,37 +6,42 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gdrider.gd.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    private List<String> mTitle;
-    private List<String> mColor;
-    private List<Integer> mPrice;
-    private List<Integer> mImage;
+    private ArrayList<String> mTitle;
+    private ArrayList<String> mColor;
+    private ArrayList<Integer> mPrice;
+    private ArrayList<Integer> mImage;
     private Context context;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mTextView;
-        public ImageView mImageView;
+        public TextView textView_title;
+        public TextView textView_price;
+        public ImageView imageView_main;
+        public ImageButton imageButton_favo;
         public CardView mCardView;
 
         public ViewHolder(View v) {
             super(v);
-            mTextView = (TextView) v.findViewById(R.id.info_text);
-            mImageView = (ImageView) v.findViewById(R.id.info_img);
+            textView_title = (TextView) v.findViewById(R.id.info_text);
+            textView_price = (TextView) v.findViewById(R.id.info_price);
+            imageView_main = (ImageView) v.findViewById(R.id.info_img);
+            imageButton_favo = (ImageButton) v.findViewById(R.id.info_favo);
             mCardView = (CardView) v.findViewById(R.id.card_view);
         }
     }
 
-    public RecyclerAdapter(List<String> title, List<String> color, List<Integer> price, List<Integer> image, Context context) {
+    public RecyclerAdapter(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image, Context context) {
         this.mTitle = title;
         this.mColor = color;
         this.mPrice = price;
@@ -54,8 +59,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(RecyclerAdapter.ViewHolder holder, final int position) {
-        holder.mTextView.setText(mTitle.get(position)); //" "+mColor.get(position)+" "+mPrice.get(position)
-        holder.mImageView.setImageResource(mImage.get(position));
+        holder.textView_title.setText(mTitle.get(position)+" "+mColor.get(position));
+        holder.textView_price.setText("$"+String.valueOf(mPrice.get(position)));
+        holder.imageView_main.setImageResource(mImage.get(position));
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
