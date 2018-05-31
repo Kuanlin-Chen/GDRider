@@ -45,10 +45,7 @@ public class CartFragment extends Fragment implements CartContract.CartView{
 
         //get data via presenter
         presenter = new CartPresenter(this);
-        presenter.getTitle();
-        presenter.getColor();
-        presenter.getPrice();
-        presenter.getImage();
+        presenter.getAllCart();
 
         recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
@@ -61,22 +58,10 @@ public class CartFragment extends Fragment implements CartContract.CartView{
     }
 
     @Override
-    public void setTitle(ArrayList<String> productTitle){
-        this.productTitle = productTitle;
-    }
-
-    @Override
-    public void setColor(ArrayList<String> productColor){
-        this.productColor = productColor;
-    }
-
-    @Override
-    public void setPrice(ArrayList<Integer> productPrice){
-        this.productPrice = productPrice;
-    }
-
-    @Override
-    public void setImage(ArrayList<Integer> productImage){
-        this.productImage = productImage;
+    public void setAllCart(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+        this.productTitle = title;
+        this.productColor = color;
+        this.productPrice = price;
+        this.productImage = image;
     }
 }

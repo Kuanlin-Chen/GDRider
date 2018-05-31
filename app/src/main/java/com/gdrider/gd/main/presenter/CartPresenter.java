@@ -1,35 +1,41 @@
 package com.gdrider.gd.main.presenter;
 
+import android.database.Cursor;
+
 import com.gdrider.gd.main.contract.CartContract;
-import com.gdrider.gd.main.model.CartModel;
+import com.gdrider.gd.main.model.DataBase;
+
+import java.util.ArrayList;
 
 public class CartPresenter implements CartContract.CartPresenter{
 
     private CartContract.CartView view;
-    private CartModel model;
+    private ArrayList<String> title;
+    private ArrayList<String> color;
+    private ArrayList<Integer> price;
+    private ArrayList<Integer> image;
 
     public CartPresenter(CartContract.CartView view) {
         this.view = view;
-        this.model = new CartModel();
+        this.title = new ArrayList<>();
+        this.color = new ArrayList<>();
+        this.price = new ArrayList<>();
+        this.image = new ArrayList<>();
     }
 
     @Override
-    public void getTitle() {
-        view.setTitle(model.getTitle());
+    public void getAllCart() {
+        Cursor cursor = DataBase.getInstance().getDB().getAllData();
+        if(cursor.getCount()!=0)cursor.moveToFirst();
+        for(int i = 0; i < cursor.getCount(); i++){
+            title.add(cursor.getString(1));
+            color.add(cursor.getString(2));
+            price.add(cursor.getInt(3));
+            image.add(cursor.getInt(4));
+            cursor.moveToNext();
+        }
+        view.setAllCart(title, color, price, image);
     }
 
-    @Override
-    public void getColor() {
-        view.setColor(model.getColor());
-    }
 
-    @Override
-    public void getPrice() {
-        view.setPrice(model.getPrice());
-    }
-
-    @Override
-    public void getImage(){
-        view.setImage(model.getImage());
-    }
 }
