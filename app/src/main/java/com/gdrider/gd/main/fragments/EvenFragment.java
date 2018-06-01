@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
 import com.gdrider.gd.main.contract.EvenContract;
-import com.gdrider.gd.main.custom.RecyclerAdapter;
+import com.gdrider.gd.main.custom.RecyclerHorizonAdapter;
 import com.gdrider.gd.main.presenter.EvenPresenter;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class EvenFragment extends Fragment implements EvenContract.EvenView{
     private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
     private EvenContract.EvenPresenter presenter;
-    private RecyclerAdapter recyclerAdapter;
+    private RecyclerHorizonAdapter recyclerAdapter;
     private RecyclerView recyclerView;
 
     public EvenFragment() {
@@ -47,7 +47,7 @@ public class EvenFragment extends Fragment implements EvenContract.EvenView{
         presenter = new EvenPresenter(this);
         presenter.getNewEvent();
 
-        recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
+        recyclerAdapter = new RecyclerHorizonAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),1);

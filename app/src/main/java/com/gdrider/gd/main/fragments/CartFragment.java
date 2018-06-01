@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
 import com.gdrider.gd.main.contract.CartContract;
-import com.gdrider.gd.main.custom.RecyclerAdapter;
+import com.gdrider.gd.main.custom.RecyclerHorizonAdapter;
 import com.gdrider.gd.main.presenter.CartPresenter;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class CartFragment extends Fragment implements CartContract.CartView{
     private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
     private CartPresenter presenter;
-    private RecyclerAdapter recyclerAdapter;
+    private RecyclerHorizonAdapter recyclerAdapter;
     private RecyclerView recyclerView;
 
     public CartFragment() {
@@ -47,7 +47,7 @@ public class CartFragment extends Fragment implements CartContract.CartView{
         presenter = new CartPresenter(this);
         presenter.getAllCart();
 
-        recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
+        recyclerAdapter = new RecyclerHorizonAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),1);
