@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
 import com.gdrider.gd.main.contract.NewsContract;
-import com.gdrider.gd.main.custom.RecyclerAdapter;
+import com.gdrider.gd.main.custom.NewsAdapter;
 import com.gdrider.gd.main.presenter.NewsPresenter;
 
 import java.util.ArrayList;
@@ -23,8 +23,15 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
     private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
     private NewsContract.NewsPresenter presenter;
-    private RecyclerAdapter recyclerAdapter;
+    private NewsAdapter newsAdapter;
     private RecyclerView recyclerView;
+
+    //Just for testing
+    private int[] mAdver = {
+            R.drawable.news1,
+            R.drawable.news2,
+            R.drawable.news3
+    };
 
     public NewsFragment() {
         //Required empty public constructor
@@ -47,12 +54,24 @@ public class NewsFragment extends Fragment implements NewsContract.NewsView{
         presenter = new NewsPresenter(this);
         presenter.getAllData();
 
-        recyclerAdapter = new RecyclerAdapter(productTitle, productColor, productPrice, productImage, getActivity());
+        //Display data in CardView
+        newsAdapter = new NewsAdapter(productTitle, productColor, productPrice, productImage, mAdver, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),2);
+        mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                switch(newsAdapter.getItemViewType(position)){
+                    case 0:
+                        return 2;
+                    default:
+                        return 1;
+                }
+            }
+        });
+        recyclerView.setAdapter(newsAdapter);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(recyclerAdapter);
 
         return view;
     }
