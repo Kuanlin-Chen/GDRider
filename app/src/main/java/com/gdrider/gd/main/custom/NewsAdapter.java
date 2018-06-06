@@ -1,15 +1,20 @@
 package com.gdrider.gd.main.custom;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.gdrider.gd.R;
 
@@ -25,6 +30,8 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<Integer> mImage;
     private int[] mAdver;
     private Context context;
+    private Handler imageSwitcherHandler;
+    private int animationCounter = 0;
 
     public NewsAdapter(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image, int[] adver, Context context){
         this.mTitle = title;
@@ -53,13 +60,40 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         switch (holder.getItemViewType()) {
             case TYPE_FIRST_ITEM:
-                BigViewHolder bigViewHolder = (BigViewHolder) holder;
-                // Do what you need for the first item
-                bigViewHolder.imageView.setImageResource(mAdver[position]);
+                final BigViewHolder bigViewHolder = (BigViewHolder) holder;
+                bigViewHolder.imageSwitcher.setInAnimation(AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left));
+                bigViewHolder.imageSwitcher.setOutAnimation(AnimationUtils.loadAnimation(context, android.R.anim.slide_out_right));
+                bigViewHolder.imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
+                     @Override
+                     public View makeView() {
+                         ImageView imageView = new ImageView(context);
+                         imageView.setAdjustViewBounds(true);
+                         return imageView;
+                     }});
+                bigViewHolder.imageSwitcher.setImageResource(mAdver[0]);
+                //Update image every five second
+                imageSwitcherHandler = new Handler(Looper.getMainLooper());
+                imageSwitcherHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        switch (animationCounter) {
+                            case 0:
+                                bigViewHolder.imageSwitcher.setImageResource(mAdver[animationCounter]);
+                                break;
+                            case 1:
+                                bigViewHolder.imageSwitcher.setImageResource(mAdver[animationCounter]);
+                                break;
+                            case 2:
+                                bigViewHolder.imageSwitcher.setImageResource(mAdver[animationCounter]);
+                                break;
+                        }
+                        if(++animationCounter > 2 ) animationCounter = 0;
+                        imageSwitcherHandler.postDelayed(this, 5000);
+                    }
+                });
                 break;
             case TYPE_ITEM:
                 NormalViewHolder normalViewHolder = (NormalViewHolder) holder;
-                // Do what you for the other items
                 normalViewHolder.textView_title.setText(mTitle.get(position-1)+" "+mColor.get(position-1));
                 normalViewHolder.textView_price.setText("$"+String.valueOf(mPrice.get(position-1)));
                 normalViewHolder.imageView_main.setImageResource(mImage.get(position-1));
@@ -84,11 +118,11 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     final class BigViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageView;
+        ImageSwitcher imageSwitcher;
 
         public BigViewHolder(View itemView) {
             super(itemView);
-            imageView = (ImageView)itemView.findViewById(R.id.image_view);
+            imageSwitcher = (ImageSwitcher)itemView.findViewById(R.id.image_switcher);
         }
     }
 
