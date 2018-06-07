@@ -9,20 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gdrider.gd.R;
-import com.gdrider.gd.main.contract.EvenContract;
+import com.gdrider.gd.main.contract.Contract;
 import com.gdrider.gd.main.custom.RecyclerHorizonAdapter;
-import com.gdrider.gd.main.presenter.EvenPresenter;
+import com.gdrider.gd.main.presenter.Presenter;
 
 import java.util.ArrayList;
 
-public class EvenFragment extends Fragment implements EvenContract.EvenView{
+public class EvenFragment extends Fragment implements Contract.View{
 
     private final String label = "EvenFragment:";
     private ArrayList<String> productTitle;
     private ArrayList<String> productColor;
     private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
-    private EvenContract.EvenPresenter presenter;
+    private Contract.Presenter presenter;
     private RecyclerHorizonAdapter recyclerAdapter;
     private RecyclerView recyclerView;
 
@@ -44,8 +44,8 @@ public class EvenFragment extends Fragment implements EvenContract.EvenView{
         View view = inflater.inflate(R.layout.fragment_even, container, false);
 
         //get data via presenter
-        presenter = new EvenPresenter(this);
-        presenter.getNewEvent();
+        presenter = new Presenter(this);
+        presenter.getEven();
 
         recyclerAdapter = new RecyclerHorizonAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
@@ -58,10 +58,25 @@ public class EvenFragment extends Fragment implements EvenContract.EvenView{
     }
 
     @Override
-    public void setNewEvent(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+    public void setEven(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
         this.productTitle = title;
         this.productColor = color;
         this.productPrice = price;
         this.productImage = image;
+    }
+
+    @Override
+    public void setNews(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+
+    }
+
+    @Override
+    public void setCart(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+
+    }
+
+    @Override
+    public void setFavo(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+
     }
 }
