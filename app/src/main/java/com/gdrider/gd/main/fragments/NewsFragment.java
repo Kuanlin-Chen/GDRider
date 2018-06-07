@@ -77,6 +77,13 @@ public class NewsFragment extends Fragment implements Contract.View{
     }
 
     @Override
+    public void onDestroyView(){
+        super.onDestroyView();
+        System.out.println(label+"onDestroyView");
+        presenter = null;
+    }
+
+    @Override
     public void setNews(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
         this.productTitle = title;
         this.productColor = color;
