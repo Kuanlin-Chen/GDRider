@@ -13,10 +13,10 @@ import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.gdrider.gd.R;
+import com.gdrider.gd.main.contract.Contract;
 
 import java.util.ArrayList;
 
@@ -32,14 +32,16 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context context;
     private Handler imageSwitcherHandler;
     private int animationCounter = 0;
+    private Contract.Presenter presenter;
 
-    public NewsAdapter(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image, int[] adver, Context context){
+    public NewsAdapter(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image, int[] adver, Context context, Contract.Presenter presenter){
         this.mTitle = title;
         this.mColor = color;
         this.mPrice = price;
         this.mImage = image;
         this.mAdver = adver;
         this.context = context;
+        this.presenter = presenter;
     }
 
     @Override
@@ -100,7 +102,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 normalViewHolder.mCardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(context, "CardView:" + (position-1), Toast.LENGTH_SHORT).show();
+                        presenter.showToast("CardView:" + (position-1));
                     }
                 });
                 break;

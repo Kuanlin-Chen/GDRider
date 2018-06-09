@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.gdrider.gd.R;
 import com.gdrider.gd.main.contract.Contract;
@@ -55,7 +56,7 @@ public class NewsFragment extends Fragment implements Contract.View{
         presenter.getNews();
 
         //Display data in CardView
-        newsAdapter = new NewsAdapter(productTitle, productColor, productPrice, productImage, mAdver, getActivity());
+        newsAdapter = new NewsAdapter(productTitle, productColor, productPrice, productImage, mAdver, getActivity(), presenter);
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),2);
@@ -104,5 +105,10 @@ public class NewsFragment extends Fragment implements Contract.View{
     @Override
     public void setFavo(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
 
+    }
+
+    @Override
+    public void setToast(String string){
+        Toast.makeText(getActivity(), string, Toast.LENGTH_SHORT).show();
     }
 }

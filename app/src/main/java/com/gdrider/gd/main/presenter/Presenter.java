@@ -78,4 +78,9 @@ public class Presenter implements Contract.Presenter{
         }
         view.setFavo(title, color, price, image);
     }
+
+    @Override
+    public void showToast(String string){
+        view.setToast(string);
+    }
 }

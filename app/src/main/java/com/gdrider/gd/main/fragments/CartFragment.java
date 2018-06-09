@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.gdrider.gd.R;
 import com.gdrider.gd.main.contract.Contract;
@@ -85,5 +86,10 @@ public class CartFragment extends Fragment implements Contract.View{
     @Override
     public void setFavo(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
 
+    }
+
+    @Override
+    public void setToast(String string){
+        Toast.makeText(getActivity(), string, Toast.LENGTH_SHORT).show();
     }
 }

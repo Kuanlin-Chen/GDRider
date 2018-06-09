@@ -9,6 +9,7 @@ public interface Contract {
         void setEven(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image);
         void setCart(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image);
         void setFavo(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image);
+        void setToast(String string);
     }
 
     interface Presenter{
@@ -16,5 +17,6 @@ public interface Contract {
         void getEven();
         void getCart();
         void getFavo();
+        void showToast(String string);
     }
 }
