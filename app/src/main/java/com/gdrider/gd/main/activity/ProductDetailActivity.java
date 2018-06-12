@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Toast;
 
 import com.gdrider.gd.R;
@@ -17,6 +19,7 @@ public class ProductDetailActivity extends AppCompatActivity implements Contract
 
     private Contract.Presenter presenter;
     private ProductDetailAdapter productDetailAdapter;
+    private Toolbar toolbar;
     private RecyclerView recyclerView;
 
     //Just for testing
@@ -29,6 +32,15 @@ public class ProductDetailActivity extends AppCompatActivity implements Contract
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
+
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // back button pressed
+                finish();
+            }
+        });
 
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
 
