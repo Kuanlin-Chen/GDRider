@@ -43,6 +43,9 @@
             </intent-filter>
         </activity>
         <!-- Facebook End -->
+
+        <activity android:name=".main.activity.ProductDetailActivity"/>
+
     </application>
 
 </manifest>

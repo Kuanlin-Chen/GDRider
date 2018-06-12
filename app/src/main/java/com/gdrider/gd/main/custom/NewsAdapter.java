@@ -1,6 +1,7 @@
 package com.gdrider.gd.main.custom;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.widget.CardView;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.gdrider.gd.R;
+import com.gdrider.gd.main.activity.ProductDetailActivity;
 import com.gdrider.gd.main.contract.Contract;
 
 import java.util.ArrayList;
@@ -102,7 +104,9 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 normalViewHolder.mCardView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        presenter.showToast("CardView:" + (position-1));
+                        //presenter.showToast("CardView:" + (position-1));
+                        Intent intent = new Intent(context, ProductDetailActivity.class);
+                        context.startActivity(intent);
                     }
                 });
                 break;
