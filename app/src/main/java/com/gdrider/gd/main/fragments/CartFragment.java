@@ -7,22 +7,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.gdrider.gd.R;
-import com.gdrider.gd.main.contract.CartContract;
+import com.gdrider.gd.main.contract.Contract;
 import com.gdrider.gd.main.custom.RecyclerHorizonAdapter;
-import com.gdrider.gd.main.presenter.CartPresenter;
+import com.gdrider.gd.main.presenter.Presenter;
 
 import java.util.ArrayList;
 
-public class CartFragment extends Fragment implements CartContract.CartView{
+public class CartFragment extends Fragment implements Contract.View{
 
     private final String label = "CartFragment:";
     private ArrayList<String> productTitle;
     private ArrayList<String> productColor;
     private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
-    private CartPresenter presenter;
+    private Contract.Presenter presenter;
     private RecyclerHorizonAdapter recyclerAdapter;
     private RecyclerView recyclerView;
 
@@ -44,8 +45,8 @@ public class CartFragment extends Fragment implements CartContract.CartView{
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
 
         //get data via presenter
-        presenter = new CartPresenter(this);
-        presenter.getAllCart();
+        presenter = new Presenter(this);
+        presenter.getCart();
 
         recyclerAdapter = new RecyclerHorizonAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
@@ -58,10 +59,37 @@ public class CartFragment extends Fragment implements CartContract.CartView{
     }
 
     @Override
-    public void setAllCart(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+    public void onDestroyView(){
+        super.onDestroyView();
+        System.out.println(label+"onDestroyView");
+        presenter = null;
+    }
+
+    @Override
+    public void setCart(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
         this.productTitle = title;
         this.productColor = color;
         this.productPrice = price;
         this.productImage = image;
+    }
+
+    @Override
+    public void setNews(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+
+    }
+
+    @Override
+    public void setEven(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+
+    }
+
+    @Override
+    public void setFavo(ArrayList<String> title, ArrayList<String> color, ArrayList<Integer> price, ArrayList<Integer> image){
+
+    }
+
+    @Override
+    public void setToast(String string){
+        Toast.makeText(getActivity(), string, Toast.LENGTH_SHORT).show();
     }
 }
