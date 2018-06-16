@@ -13,6 +13,7 @@
     <string name="title_news">最新動態</string>
     <string name="title_events">最新活動</string>
     <string name="title_detail">商品介紹</string>
+    <string name="title_feature">商品特色</string>
     <string name="drawer_title">商品分類</string>
     <string name="item_sol">台灣SOL</string>
     <string name="item_zeus">台灣ZEUS</string>

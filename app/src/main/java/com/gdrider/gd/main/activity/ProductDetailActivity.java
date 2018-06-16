@@ -29,6 +29,15 @@ public class ProductDetailActivity extends AppCompatActivity implements Contract
             R.drawable.gdemo
     };
 
+    //Just for testing
+    private String[] mFeature = {
+            "獨家安全帽鎖孔",
+            "專利級插釦式釦具",
+            "內藏式遮陽鏡片機構",
+            "鏡片可抗UV400",
+            "鏡片採用高強度PC材質"
+    };
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
@@ -47,7 +56,7 @@ public class ProductDetailActivity extends AppCompatActivity implements Contract
         //get data via presenter
         presenter = new Presenter(this);
 
-        productDetailAdapter = new ProductDetailAdapter("SOL SF3 全罩安全帽", "黑", 2700, mImage, this, presenter);
+        productDetailAdapter = new ProductDetailAdapter("SOL SF3 全罩安全帽", "黑", 2700, mImage, mFeature, this, presenter);
         GridLayoutManager mLayoutManager = new GridLayoutManager(this,1);
         recyclerView.setAdapter(productDetailAdapter);
         recyclerView.setLayoutManager(mLayoutManager);
