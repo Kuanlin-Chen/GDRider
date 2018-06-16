@@ -20,21 +20,24 @@ import com.gdrider.gd.main.contract.Contract;
 public class ProductDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private final int TYPE_FIRST_ITEM = 0;
-    private final int TYPE_ITEM = 1;
+    private final int TYPE_SECOND_ITEM = 1;
+    private final int TYPE_ITEM = 2;
     private String mTitle;
     private String mColor;
     private Integer mPrice;
     private int[] mImage;
+    private String[] mFeature;
     private Context context;
     private Handler imageSwitcherHandler;
     private int animationCounter = 0;
     private Contract.Presenter presenter;
 
-    public ProductDetailAdapter(String title, String color, Integer price, int[] image, Context context, Contract.Presenter presenter){
+    public ProductDetailAdapter(String title, String color, Integer price, int[] image, String[] feature, Context context, Contract.Presenter presenter){
         this.mTitle = title;
         this.mColor = color;
         this.mPrice = price;
         this.mImage = image;
+        this.mFeature = feature;
         this.context = context;
         this.presenter = presenter;
     }
@@ -45,9 +48,12 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<RecyclerView.View
             case TYPE_FIRST_ITEM:
                 final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ads, parent, false);
                 return new ImageViewHolder(view);
-            case TYPE_ITEM:
+            case TYPE_SECOND_ITEM:
                 final View view2 = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_detail, parent, false);
                 return new DetailViewHolder(view2);
+            case TYPE_ITEM:
+                final View view3 = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_feature, parent, false);
+                return new FeatureViewHolder(view3);
             default:
                 return null;
         }
@@ -89,7 +95,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<RecyclerView.View
                     }
                 });
                 break;
-            case TYPE_ITEM:
+            case TYPE_SECOND_ITEM:
                 DetailViewHolder detailViewHolder = (DetailViewHolder) holder;
                 detailViewHolder.textView_title.setText(mTitle+" "+mColor);
                 detailViewHolder.textView_price.setText("$"+String.valueOf(mPrice));
@@ -100,6 +106,15 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<RecyclerView.View
                     }
                 });
                 break;
+            case TYPE_ITEM:
+                FeatureViewHolder featureViewHolder = (FeatureViewHolder) holder;
+                featureViewHolder.textView_title.setText(R.string.title_feature);
+                StringBuilder builder = new StringBuilder();
+                for (String details : mFeature) {
+                    builder.append(" • " + details + "\n");
+                }
+                featureViewHolder.textView_feature.setText(builder.toString());
+                break;
         }
     }
 
@@ -107,6 +122,8 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<RecyclerView.View
     public int getItemViewType(int position) {
         if (position == 0) {
             return TYPE_FIRST_ITEM;
+        } else if (position == 1){
+            return TYPE_SECOND_ITEM;
         } else {
             return TYPE_ITEM;
         }
@@ -136,8 +153,20 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
     }
 
+    final class FeatureViewHolder extends RecyclerView.ViewHolder {
+
+        TextView textView_title;
+        TextView textView_feature;
+
+        public FeatureViewHolder(View itemView) {
+            super(itemView);
+            textView_title = (TextView)itemView.findViewById(R.id.textView_title);
+            textView_feature = (TextView)itemView.findViewById(R.id.textView_feature);
+        }
+    }
+
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }
