@@ -7,7 +7,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +19,7 @@ import java.util.List;
 
 import com.facebook.login.LoginManager;
 import com.gdrider.gd.login.LoginActivity;
+import com.gdrider.gd.main.custom.CustomViewPager;
 import com.gdrider.gd.main.fragments.CartFragment;
 import com.gdrider.gd.main.fragments.FavoFragment;
 import com.gdrider.gd.main.fragments.MainFragment;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
-    private ViewPager viewPager;
+    private CustomViewPager viewPager;
     private DrawerLayout drawerLayout;
     private final String label = "MainActivity:";
 
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (CustomViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         //setupTabIcons();
     }
 
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPager(CustomViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new MainFragment(), getString(R.string.title_main));
         adapter.addFragment(new CartFragment(), getString(R.string.title_cart));
