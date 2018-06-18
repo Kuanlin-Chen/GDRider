@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.gdrider.gd.R;
 import com.gdrider.gd.main.contract.Contract;
-import com.gdrider.gd.main.custom.RecyclerHorizonAdapter;
+import com.gdrider.gd.main.custom.FavoriteAdapter;
 import com.gdrider.gd.main.presenter.Presenter;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class FavoFragment extends Fragment implements Contract.View{
     private ArrayList<Integer> productPrice;
     private ArrayList<Integer> productImage;
     private Contract.Presenter presenter;
-    private RecyclerHorizonAdapter recyclerAdapter;
+    private FavoriteAdapter favoriteAdapter;
     private RecyclerView recyclerView;
 
     public FavoFragment() {
@@ -48,12 +48,12 @@ public class FavoFragment extends Fragment implements Contract.View{
         presenter = new Presenter(this);
         presenter.getFavo();
 
-        recyclerAdapter = new RecyclerHorizonAdapter(productTitle, productColor, productPrice, productImage, getActivity());
+        favoriteAdapter = new FavoriteAdapter(productTitle, productColor, productPrice, productImage, getActivity());
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(),1);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(recyclerAdapter);
+        recyclerView.setAdapter(favoriteAdapter);
 
         return view;
     }
