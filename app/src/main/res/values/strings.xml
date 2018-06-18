@@ -31,4 +31,6 @@
 
     <string name="string_login_fail">登入失敗</string>
     <string name="string_login_success">登入成功</string>
+
+    <string name="button_add_to_cart">加入購物車</string>
 </resources>
